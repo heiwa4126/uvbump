@@ -52,6 +52,7 @@ dev = [
   "poethepoet>=0.37.0",
   "pytest>=8.4.2",
   "ruff>=0.13.0",
+  "types-colorama>=0.4.15.20250801",
   "validate-pyproject>=0.24.1",
 ]
 

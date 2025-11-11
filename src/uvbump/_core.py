@@ -5,14 +5,14 @@ import git
 from colorama import Fore, Style, init
 from packaging.version import InvalidVersion, Version
 
-# Initialize colorama
-init()
-
 try:
     import tomllib
 except ImportError:
     import tomli as tomllib  # type: ignore[import-not-found,no-redef]
 import tomli_w
+
+# Initialize colorama
+init()
 
 # Tag prefix constants
 PRERELEASE_TAG_PREFIX = "test-"
@@ -90,7 +90,9 @@ def check_git_status(repo: git.Repo, dry_run: bool = False) -> None:
     """Check git repository status."""
     if repo.is_dirty(untracked_files=False):
         if dry_run:
-            print(f"{Fore.YELLOW}Warning: Repository has unstaged changes{Style.RESET_ALL}")
+            print(
+                f"{Fore.YELLOW}Warning: Repository has unstaged changes{Style.RESET_ALL}"
+            )
         else:
             raise UvbumpError(
                 "Repository has unstaged changes. Please commit before running"
@@ -98,7 +100,9 @@ def check_git_status(repo: git.Repo, dry_run: bool = False) -> None:
 
     if repo.index.diff("HEAD"):
         if dry_run:
-            print(f"{Fore.YELLOW}Warning: Repository has staged changes{Style.RESET_ALL}")
+            print(
+                f"{Fore.YELLOW}Warning: Repository has staged changes{Style.RESET_ALL}"
+            )
         else:
             raise UvbumpError(
                 "Repository has staged changes. Please commit before running"
