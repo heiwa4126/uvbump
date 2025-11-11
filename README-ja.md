@@ -1,11 +1,11 @@
-# uvbump
+# bumpuv
 
-[![PyPI - Version](https://img.shields.io/pypi/v/uvbump.svg)](https://pypi.org/project/uvbump)
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/uvbump.svg)
-![Last Commit](https://img.shields.io/github/last-commit/heiwa4126/uvbump)
+[![PyPI - Version](https://img.shields.io/pypi/v/bumpuv.svg)](https://pypi.org/project/bumpuv)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/bumpuv.svg)
+![Last Commit](https://img.shields.io/github/last-commit/heiwa4126/bumpuv)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-[English](https://github.com/heiwa4126/uvbump/blob/main/README.md) | 日本語
+[English](https://github.com/heiwa4126/bumpuv/blob/main/README.md) | 日本語
 
 `npm version` に似た CLI を Python で書いたもの。参考: [npm-version](https://docs.npmjs.com/cli/v11/commands/npm-version)
 
@@ -16,29 +16,29 @@
 
 ```sh
 # uv を使用する場合
-uv add uvbump --dev
-uv run uvbump <オプション>
+uv add bumpuv --dev
+uv run bumpuv <オプション>
 
 # または
-uvx uvbump <オプション>
+uvx bumpuv <オプション>
 
 # または
-uv tool install uvbump
-uvbump <オプション>
+uv tool install bumpuv
+bumpuv <オプション>
 
 # pip を使用する場合
-pip install uvbump
-uvbump <オプション>
+pip install bumpuv
+bumpuv <オプション>
 
 # poetry の場合
-poetry add --group dev uvbump
-poetry run uvbump <オプション>
+poetry add --group dev bumpuv
+poetry run bumpuv <オプション>
 ```
 
 ## 使用法
 
 ```console
-uvbump [<newversion> | major | minor | patch | bump] [-n|--dry-run] [-h|--help]
+bumpuv [<newversion> | major | minor | patch | bump] [-n|--dry-run] [-h|--help]
 ```
 
 ### バージョン更新タイプ
@@ -60,59 +60,59 @@ uvbump [<newversion> | major | minor | patch | bump] [-n|--dry-run] [-h|--help]
 
 ```sh
 # パッチバージョンを上げる (1.0.0 → 1.0.1)
-uvbump patch
+bumpuv patch
 
 # マイナーバージョンを上げる (1.0.1 → 1.1.0)
-uvbump minor
+bumpuv minor
 
 # メジャーバージョンを上げる (1.1.0 → 2.0.0)
-uvbump major
+bumpuv major
 
 # デフォルト動作 (bumpと同じ)
-uvbump
+bumpuv
 ```
 
 ### 明示的なバージョン指定
 
 ```sh
 # 特定のバージョンに設定
-uvbump 1.5.0
+bumpuv 1.5.0
 
 # pre-releaseバージョンに設定
-uvbump 2.0.0a1
+bumpuv 2.0.0a1
 
 # リリース候補版
-uvbump 1.0.0rc1
+bumpuv 1.0.0rc1
 ```
 
 ### pre-releaseバージョンの管理
 
 ```sh
 # pre-release番号を上げる (1.0.0a1 → 1.0.0a2)
-uvbump bump
+bumpuv bump
 
 # pre-releaseから正式版へ (明示的に指定)
-uvbump 1.0.0
+bumpuv 1.0.0
 ```
 
 ### dry-runモード
 
 ```sh
 # 変更内容を確認 (実際の変更は行わない)
-uvbump patch -n
-uvbump minor --dry-run
+bumpuv patch -n
+bumpuv minor --dry-run
 ```
 
 ### 出力例
 
 ```console
-$ uvbump patch
+$ bumpuv patch
 Updated: /path/to/project/pyproject.toml
 Version: 1.0.0 → 1.0.1
 Commit: 1.0.1
 Tag: v1.0.1
 
-$ uvbump 2.0.0a1
+$ bumpuv 2.0.0a1
 Updated: /path/to/project/pyproject.toml
 Version: 1.0.1 → 2.0.0a1
 Commit: 2.0.0a1
@@ -123,13 +123,13 @@ Tag: test-2.0.0a1
 
 ### 基本動作
 
-- デフォルトは `uvbump bump` に等価
+- デフォルトは `bumpuv bump` に等価
 - PEP 440 準拠のバージョン管理
 - 同じバージョンやダウングレードは不許可
   - ダウングレード例: `1.0.0` > `1.0.0a1`
 - pre-release と通常版の切り替えは明示的なバージョン指定が必要
-  - 例: `1.0.0` → `1.1.0a1` は `uvbump 1.1.0a1` で指定
-  - 例: `1.0.0a1` → `1.0.0` は `uvbump 1.0.0` で指定
+  - 例: `1.0.0` → `1.1.0a1` は `bumpuv 1.1.0a1` で指定
+  - 例: `1.0.0a1` → `1.0.0` は `bumpuv 1.0.0` で指定
 
 ### Git統合
 

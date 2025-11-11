@@ -1,9 +1,9 @@
-# uvbump Project Rules
+# bumpuv Project Rules
 
 ## Project Overview
 
 - This is a Python CLI tool for version bumping in pyproject.toml files, similar to npm version
-- Package name: uvbump
+- Package name: bumpuv
 - Target Python version: >=3.10
 - Build system: uv_build
 - License: MIT
@@ -49,7 +49,7 @@
 
 ## File Structure
 
-- Source code in `src/uvbump/`
+- Source code in `src/bumpuv/`
 - Tests alongside source files with `_test.py` suffix
 - CLI entry point in `__main__.py`
 - Core functionality in `_core.py`

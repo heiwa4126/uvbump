@@ -1,11 +1,11 @@
-# uvbump
+# bumpuv
 
-[![PyPI - Version](https://img.shields.io/pypi/v/uvbump.svg)](https://pypi.org/project/uvbump)
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/uvbump.svg)
-![Last Commit](https://img.shields.io/github/last-commit/heiwa4126/uvbump)
+[![PyPI - Version](https://img.shields.io/pypi/v/bumpuv.svg)](https://pypi.org/project/bumpuv)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/bumpuv.svg)
+![Last Commit](https://img.shields.io/github/last-commit/heiwa4126/bumpuv)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-English | [日本語](https://github.com/heiwa4126/uvbump/blob/main/README-ja.md)
+English | [日本語](https://github.com/heiwa4126/bumpuv/blob/main/README-ja.md)
 
 A CLI tool similar to `npm version` written in Python. Reference: [npm-version](https://docs.npmjs.com/cli/v11/commands/npm-version)
 
@@ -15,29 +15,29 @@ Performs `npm version`-like operations on pyproject.toml files for [Astral uv](h
 
 ```sh
 # Using uv
-uv add uvbump --dev
-uv run uvbump <options>
+uv add bumpuv --dev
+uv run bumpuv <options>
 
 # Or
-uvx uvbump <options>
+uvx bumpuv <options>
 
 # Or
-uv tool install uvbump
-uvbump <options>
+uv tool install bumpuv
+bumpuv <options>
 
 # Using pip
-pip install uvbump
-uvbump <options>
+pip install bumpuv
+bumpuv <options>
 
 # Using poetry
-poetry add --group dev uvbump
-poetry run uvbump <options>
+poetry add --group dev bumpuv
+poetry run bumpuv <options>
 ```
 
 ## Usage
 
 ```console
-uvbump [<newversion> | major | minor | patch | bump] [-n|--dry-run] [-h|--help]
+bumpuv [<newversion> | major | minor | patch | bump] [-n|--dry-run] [-h|--help]
 ```
 
 ### Version Update Types
@@ -59,59 +59,59 @@ uvbump [<newversion> | major | minor | patch | bump] [-n|--dry-run] [-h|--help]
 
 ```sh
 # Increment patch version (1.0.0 → 1.0.1)
-uvbump patch
+bumpuv patch
 
 # Increment minor version (1.0.1 → 1.1.0)
-uvbump minor
+bumpuv minor
 
 # Increment major version (1.1.0 → 2.0.0)
-uvbump major
+bumpuv major
 
 # Default behavior (same as bump)
-uvbump
+bumpuv
 ```
 
 ### Explicit Version Specification
 
 ```sh
 # Set to specific version
-uvbump 1.5.0
+bumpuv 1.5.0
 
 # Set to pre-release version
-uvbump 2.0.0a1
+bumpuv 2.0.0a1
 
 # Release candidate
-uvbump 1.0.0rc1
+bumpuv 1.0.0rc1
 ```
 
 ### Pre-release Version Management
 
 ```sh
 # Increment pre-release number (1.0.0a1 → 1.0.0a2)
-uvbump bump
+bumpuv bump
 
 # From pre-release to stable (explicit specification)
-uvbump 1.0.0
+bumpuv 1.0.0
 ```
 
 ### Dry-run Mode
 
 ```sh
 # Check changes (no actual changes made)
-uvbump patch -n
-uvbump minor --dry-run
+bumpuv patch -n
+bumpuv minor --dry-run
 ```
 
 ### Output Examples
 
 ```console
-$ uvbump patch
+$ bumpuv patch
 Updated: /path/to/project/pyproject.toml
 Version: 1.0.0 → 1.0.1
 Commit: 1.0.1
 Tag: v1.0.1
 
-$ uvbump 2.0.0a1
+$ bumpuv 2.0.0a1
 Updated: /path/to/project/pyproject.toml
 Version: 1.0.1 → 2.0.0a1
 Commit: 2.0.0a1
@@ -122,13 +122,13 @@ Tag: test-2.0.0a1
 
 ### Basic Behavior
 
-- Default is equivalent to `uvbump bump`
+- Default is equivalent to `bumpuv bump`
 - PEP 440 compliant version management
 - Same version and downgrades are not allowed
   - Downgrade example: `1.0.0` > `1.0.0a1`
 - Switching between pre-release and normal versions requires explicit version specification
-  - Example: `1.0.0` → `1.1.0a1` requires `uvbump 1.1.0a1`
-  - Example: `1.0.0a1` → `1.0.0` requires `uvbump 1.0.0`
+  - Example: `1.0.0` → `1.1.0a1` requires `bumpuv 1.1.0a1`
+  - Example: `1.0.0a1` → `1.0.0` requires `bumpuv 1.0.0`
 
 ### Git Integration
 

@@ -3,6 +3,49 @@ revision = 3
 requires-python = ">=3.10"
 
 [[package]]
+name = "bumpuv"
+version = "0.0.1a1"
+source = { editable = "." }
+dependencies = [
+    { name = "colorama" },
+    { name = "gitpython" },
+    { name = "packaging" },
+    { name = "tomli", marker = "python_full_version < '3.11'" },
+    { name = "tomli-w" },
+]
+
+[package.dev-dependencies]
+dev = [
+    { name = "mypy" },
+    { name = "pep440check" },
+    { name = "poethepoet" },
+    { name = "pytest" },
+    { name = "ruff" },
+    { name = "types-colorama" },
+    { name = "validate-pyproject" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "colorama", specifier = ">=0.4.0" },
+    { name = "gitpython", specifier = ">=3.1.0" },
+    { name = "packaging", specifier = ">=21.0" },
+    { name = "tomli", marker = "python_full_version < '3.11'", specifier = ">=2.0.0" },
+    { name = "tomli-w", specifier = ">=1.0.0" },
+]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "mypy", specifier = ">=1.18.1" },
+    { name = "pep440check", specifier = ">=0.0.1" },
+    { name = "poethepoet", specifier = ">=0.37.0" },
+    { name = "pytest", specifier = ">=8.4.2" },
+    { name = "ruff", specifier = ">=0.13.0" },
+    { name = "types-colorama", specifier = ">=0.4.15.20250801" },
+    { name = "validate-pyproject", specifier = ">=0.24.1" },
+]
+
+[[package]]
 name = "colorama"
 version = "0.4.6"
 source = { registry = "https://pypi.org/simple" }
@@ -381,49 +424,6 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/72/94/1a15dd82efb362ac84269196e94cf00f187f7ed21c242792a923cdb1c61f/typing_extensions-4.15.0.tar.gz", hash = "sha256:0cea48d173cc12fa28ecabc3b837ea3cf6f38c6d1136f85cbaaf598984861466", size = 109391, upload-time = "2025-08-25T13:49:26.313Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/18/67/36e9267722cc04a6b9f15c7f3441c2363321a3ea07da7ae0c0707beb2a9c/typing_extensions-4.15.0-py3-none-any.whl", hash = "sha256:f0fa19c6845758ab08074a0cfa8b7aecb71c999ca73d62883bc25cc018c4e548", size = 44614, upload-time = "2025-08-25T13:49:24.86Z" },
-]
-
-[[package]]
-name = "uvbump"
-version = "0.0.1a0"
-source = { editable = "." }
-dependencies = [
-    { name = "colorama" },
-    { name = "gitpython" },
-    { name = "packaging" },
-    { name = "tomli", marker = "python_full_version < '3.11'" },
-    { name = "tomli-w" },
-]
-
-[package.dev-dependencies]
-dev = [
-    { name = "mypy" },
-    { name = "pep440check" },
-    { name = "poethepoet" },
-    { name = "pytest" },
-    { name = "ruff" },
-    { name = "types-colorama" },
-    { name = "validate-pyproject" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "colorama", specifier = ">=0.4.0" },
-    { name = "gitpython", specifier = ">=3.1.0" },
-    { name = "packaging", specifier = ">=21.0" },
-    { name = "tomli", marker = "python_full_version < '3.11'", specifier = ">=2.0.0" },
-    { name = "tomli-w", specifier = ">=1.0.0" },
-]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "mypy", specifier = ">=1.18.1" },
-    { name = "pep440check", specifier = ">=0.0.1" },
-    { name = "poethepoet", specifier = ">=0.37.0" },
-    { name = "pytest", specifier = ">=8.4.2" },
-    { name = "ruff", specifier = ">=0.13.0" },
-    { name = "types-colorama", specifier = ">=0.4.15.20250801" },
-    { name = "validate-pyproject", specifier = ">=0.24.1" },
 ]
 
 [[package]]

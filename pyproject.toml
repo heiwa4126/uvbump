@@ -1,5 +1,5 @@
 [project]
-name = "uvbump"
+name = "bumpuv"
 version = "0.0.1a1"
 description = "Version bumping tool for Python projects using pyproject.toml, similar to npm version"
 keywords = [
@@ -32,12 +32,12 @@ dependencies = [
 file = "LICENSE"
 
 [project.urls]
-Documentation = "https://github.com/heiwa4126/uvbump#readme"
-Issues = "https://github.com/heiwa4126/uvbump/issues"
-Source = "https://github.com/heiwa4126/uvbump"
+Documentation = "https://github.com/heiwa4126/bumpuv#readme"
+Issues = "https://github.com/heiwa4126/bumpuv/issues"
+Source = "https://github.com/heiwa4126/bumpuv"
 
 [project.scripts]
-uvbump = "uvbump.__main__:main"
+bumpuv = "bumpuv.__main__:main"
 
 [build-system]
 requires = [

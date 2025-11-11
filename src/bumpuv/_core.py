@@ -28,20 +28,20 @@ class VersionInfo:
     tag: str
 
 
-class UvbumpError(Exception):
+class bumpuvError(Exception):
     pass
 
 
 def load_pyproject_toml(path: Path) -> dict:
     """Load pyproject.toml and return parsed content."""
     if not path.exists():
-        raise UvbumpError(f"pyproject.toml not found in {path.parent}")
+        raise bumpuvError(f"pyproject.toml not found in {path.parent}")
 
     with open(path, "rb") as f:
         data = tomllib.load(f)
 
     if "project" not in data or "version" not in data["project"]:
-        raise UvbumpError("project.version not found in pyproject.toml")
+        raise bumpuvError("project.version not found in pyproject.toml")
 
     return data
 
@@ -57,7 +57,7 @@ def validate_version(version_str: str) -> Version:
     try:
         return Version(version_str)
     except InvalidVersion:
-        raise UvbumpError(f"Invalid version format: {version_str}")
+        raise bumpuvError(f"Invalid version format: {version_str}")
 
 
 def bump_version(current: Version, bump_type: str) -> Version:
@@ -76,14 +76,14 @@ def bump_version(current: Version, bump_type: str) -> Version:
                 pre_type, pre_num = pre
                 return Version(f"{current.base_version}{pre_type}{pre_num + 1}")
             else:
-                raise UvbumpError(
+                raise bumpuvError(
                     "Cannot bump pre-release version without pre-release number"
                 )
         else:
             # Same as patch
             return Version(f"{current.major}.{current.minor}.{current.micro + 1}")
     else:
-        raise UvbumpError(f"Unknown bump type: {bump_type}")
+        raise bumpuvError(f"Unknown bump type: {bump_type}")
 
 
 def check_git_status(repo: git.Repo, dry_run: bool = False) -> None:
@@ -94,7 +94,7 @@ def check_git_status(repo: git.Repo, dry_run: bool = False) -> None:
                 f"{Fore.YELLOW}Warning: Repository has unstaged changes{Style.RESET_ALL}"
             )
         else:
-            raise UvbumpError(
+            raise bumpuvError(
                 "Repository has unstaged changes. Please commit before running"
             )
 
@@ -104,7 +104,7 @@ def check_git_status(repo: git.Repo, dry_run: bool = False) -> None:
                 f"{Fore.YELLOW}Warning: Repository has staged changes{Style.RESET_ALL}"
             )
         else:
-            raise UvbumpError(
+            raise bumpuvError(
                 "Repository has staged changes. Please commit before running"
             )
 
@@ -130,7 +130,7 @@ def update_version(new_version: str, dry_run: bool = False) -> VersionInfo:
 
     # Check version progression
     if new_version_obj <= current_version:
-        raise UvbumpError(
+        raise bumpuvError(
             f"New version {new_version_obj} must be greater than current version {current_version}"
         )
 
@@ -138,7 +138,7 @@ def update_version(new_version: str, dry_run: bool = False) -> VersionInfo:
     try:
         repo = git.Repo(".")
     except git.InvalidGitRepositoryError:
-        raise UvbumpError("Not a git repository")
+        raise bumpuvError("Not a git repository")
 
     check_git_status(repo, dry_run)
 

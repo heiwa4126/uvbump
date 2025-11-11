@@ -5,7 +5,7 @@ from pathlib import Path
 import git
 import pytest
 
-from ._core import UvbumpError, update_version
+from ._core import bumpuvError, update_version
 
 try:
     import tomllib
@@ -156,7 +156,7 @@ def test_version_downgrade_error(temp_project):
     """Test error on version downgrade."""
     project_dir, repo = temp_project
 
-    with pytest.raises(UvbumpError, match="must be greater than"):
+    with pytest.raises(bumpuvError, match="must be greater than"):
         update_version("0.9.0")
 
 
@@ -164,7 +164,7 @@ def test_same_version_error(temp_project):
     """Test error on same version."""
     project_dir, repo = temp_project
 
-    with pytest.raises(UvbumpError, match="must be greater than"):
+    with pytest.raises(bumpuvError, match="must be greater than"):
         update_version("1.0.0")
 
 
@@ -176,7 +176,7 @@ def test_unstaged_changes_error(temp_project):
     with open("pyproject.toml", "a") as f:
         f.write("\n# test comment\n")
 
-    with pytest.raises(UvbumpError, match="unstaged changes"):
+    with pytest.raises(bumpuvError, match="unstaged changes"):
         update_version("patch")
 
 
@@ -188,7 +188,7 @@ def test_staged_changes_error(temp_project):
     Path("test_file.txt").write_text("test")
     repo.index.add(["test_file.txt"])
 
-    with pytest.raises(UvbumpError, match="staged changes"):
+    with pytest.raises(bumpuvError, match="staged changes"):
         update_version("patch")
 
 
@@ -205,7 +205,7 @@ def test_no_pyproject_toml_error():
         os.chdir(project_dir)
 
         try:
-            with pytest.raises(UvbumpError, match="pyproject.toml not found"):
+            with pytest.raises(bumpuvError, match="pyproject.toml not found"):
                 update_version("patch")
         finally:
             os.chdir(original_cwd)
@@ -234,7 +234,7 @@ description = "Test project"
         os.chdir(project_dir)
 
         try:
-            with pytest.raises(UvbumpError, match="project.version not found"):
+            with pytest.raises(bumpuvError, match="project.version not found"):
                 update_version("patch")
         finally:
             os.chdir(original_cwd)
@@ -259,7 +259,7 @@ description = "Test project"
         os.chdir(project_dir)
 
         try:
-            with pytest.raises(UvbumpError, match="Not a git repository"):
+            with pytest.raises(bumpuvError, match="Not a git repository"):
                 update_version("patch")
         finally:
             os.chdir(original_cwd)
@@ -269,7 +269,7 @@ def test_invalid_version_error(temp_project):
     """Test error with invalid version format."""
     project_dir, repo = temp_project
 
-    with pytest.raises(UvbumpError, match="Invalid version format"):
+    with pytest.raises(bumpuvError, match="Invalid version format"):
         update_version("invalid-version")
 
 

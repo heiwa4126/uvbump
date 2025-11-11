@@ -1,6 +1,7 @@
 import pytest
 from packaging.version import Version
-from ._core import validate_version, bump_version, UvbumpError
+
+from ._core import bump_version, bumpuvError, validate_version
 
 
 def test_validate_version():
@@ -11,7 +12,7 @@ def test_validate_version():
     assert validate_version("2.0.0rc1") == Version("2.0.0rc1")
 
     # Invalid versions
-    with pytest.raises(UvbumpError):
+    with pytest.raises(bumpuvError):
         validate_version("invalid")
 
 
@@ -48,5 +49,5 @@ def test_bump_prerelease():
 def test_bump_invalid_type():
     """Test invalid bump type."""
     v = Version("1.0.0")
-    with pytest.raises(UvbumpError):
+    with pytest.raises(bumpuvError):
         bump_version(v, "invalid")

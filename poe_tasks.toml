@@ -4,12 +4,12 @@
 type = "uv"
 
 [env]
-RUN_BASE = "src/uvbump"
+RUN_BASE = "src/bumpuv"
 TRIVY_IGNORE = "--skip-dirs ./tmp,./xml"
 SHELL = "bash"
 
 [tasks]
-main = "uvbump"
+main = "bumpuv"
 
 # ======== tests
 test = "pytest -v --tb=short src"
@@ -19,8 +19,8 @@ tests = ["test"]
 tests-all = ["test-py310", "test"]
 
 # ======== smoke tests
-smoke1 = "uv run --isolated --no-project --with dist/*.whl uvbump --help"
-smoke2 = "uv run --isolated --no-project --with dist/*.tar.gz uvbump --help"
+smoke1 = "uv run --isolated --no-project --with dist/*.whl bumpuv --help"
+smoke2 = "uv run --isolated --no-project --with dist/*.tar.gz bumpuv --help"
 smoketest = ["smoke1", "smoke2"]
 
 # ======== lint

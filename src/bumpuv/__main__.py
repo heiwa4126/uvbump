@@ -1,7 +1,9 @@
 import argparse
 import sys
+
 from colorama import Fore, Style, init
-from ._core import update_version, UvbumpError
+
+from ._core import bumpuvError, update_version
 
 # Initialize colorama
 init()
@@ -10,7 +12,7 @@ init()
 def main() -> None:
     """Main CLI entry point."""
     parser = argparse.ArgumentParser(
-        prog="uvbump",
+        prog="bumpuv",
         description="Version bumping tool for Python projects using pyproject.toml",
     )
     parser.add_argument(
@@ -41,7 +43,7 @@ def main() -> None:
         if args.dry_run:
             print("(dry run - no changes made)")
 
-    except UvbumpError as e:
+    except bumpuvError as e:
         print(f"{Fore.RED}Error: {e}{Style.RESET_ALL}", file=sys.stderr)
         sys.exit(1)
     except Exception as e:
