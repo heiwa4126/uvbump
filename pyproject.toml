@@ -5,8 +5,8 @@ version = "0.0.4"
 # - Regular releases: e.g. v1.2.3
 # - Pre-releases: e.g. v1.2.3rc1, v1.2.3b1, v1.2.3a1 (PEP 440 format)
 # So use PEP 440 format from the beginning
-description = "Display Python version, executable path, and script path when run with uv"
-keywords = ["uv", "python", "version", "path", "tool"]
+description = "Version bumping tool for Python projects using pyproject.toml, similar to npm version"
+keywords = ["version", "bump", "pyproject", "git", "release", "semver"]
 classifiers = [
   "License :: OSI Approved :: MIT License",
   "Operating System :: OS Independent",
@@ -17,9 +17,14 @@ license.file = "LICENSE"
 authors = [
   { name = "heiwa4126", email = "heiwa4126@gmail.com" },
 ]
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 
-dependencies = []
+dependencies = [
+  "GitPython>=3.1.0",
+  "packaging>=21.0",
+  "tomli>=2.0.0; python_version<'3.11'",
+  "tomli-w>=1.0.0",
+]
 
 [project.urls]
 Documentation = "https://github.com/heiwa4126/uvbump#readme"

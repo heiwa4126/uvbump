@@ -1,9 +1,4 @@
-from ._core import uvbump, format_python_info
-
-
-def main() -> None:
-    print(format_python_info(uvbump()))
-
+from ._core import main
 
 if __name__ == "__main__":
     main()
