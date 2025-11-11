@@ -16,8 +16,8 @@ test = "pytest -v --tb=short src"
 tests = ["test"]
 
 # ======== smoke tests
-smoke1 = "uv run --isolated --no-project --with dist/*.whl uvbump"
-smoke2 = "uv run --isolated --no-project --with dist/*.tar.gz uvbump"
+smoke1 = "uv run --isolated --no-project --with dist/*.whl uvbump --help"
+smoke2 = "uv run --isolated --no-project --with dist/*.tar.gz uvbump --help"
 smoketest = ["smoke1", "smoke2"]
 
 # ======== lint

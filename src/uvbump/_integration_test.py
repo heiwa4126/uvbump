@@ -1,15 +1,16 @@
 import os
 import tempfile
-import shutil
 from pathlib import Path
-import pytest
+
 import git
-from ._core import update_version, UvbumpError
+import pytest
+
+from ._core import UvbumpError, update_version
 
 try:
     import tomllib
 except ImportError:
-    import tomli as tomllib
+    import tomli as tomllib  # type: ignore[import-not-found,no-redef]
 
 
 @pytest.fixture
@@ -197,7 +198,7 @@ def test_no_pyproject_toml_error():
         project_dir.mkdir()
 
         # Initialize git repo but no pyproject.toml
-        repo = git.Repo.init(project_dir)
+        # repo = git.Repo.init(project_dir)
 
         original_cwd = os.getcwd()
         os.chdir(project_dir)
