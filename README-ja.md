@@ -9,9 +9,7 @@
 
 `npm version` に似た CLI を Python で書いたもの。参考: [npm-version](https://docs.npmjs.com/cli/v11/commands/npm-version)
 
-Astral uv (や poetry 等 PEP 621 準拠)の pyproject.toml に対して
-`npm version`
-同様の処理を行う。主に GitHub Actions の発火に使用する。
+Astral uv (や poetry 等 PEP 621 準拠)の pyproject.toml に対して `npm version` 同様の処理を行う。主に GitHub Actions の発火に使用する。
 
 ## インストールと実行方法
 
@@ -25,15 +23,15 @@ uvx uvbump <オプション>
 
 # または
 uv tool install uvbump
-uvbump
+uvbump <オプション>
 
 # pip を使用する場合
 pip install uvbump
-uvbump
+uvbump <オプション>
 
 # poetry の場合
 poetry add --group dev uvbump
-poetry run uvbump
+poetry run uvbump <オプション>
 ```
 
 ## 使用法
@@ -124,7 +122,7 @@ Tag: test-2.0.0a1
 
 ### 基本動作
 
-- デフォルトは `uvbump bump` に同じ
+- デフォルトは `uvbump bump` に等価
 - PEP 440 準拠のバージョン管理
 - 同じバージョンやダウングレードは不許可
   - ダウングレード例: `1.0.0` > `1.0.0a1`
@@ -159,3 +157,36 @@ Tag: test-2.0.0a1
 - [bump2version](https://pypi.org/project/bump2version/)
 - [bump-my-version](https://pypi.org/project/bump-my-version/)
 - [bumpver](https://pypi.org/project/bumpver/)
+
+## 開発
+
+### セットアップ
+
+```bash
+uv sync
+```
+
+### タスク実行
+
+```bash
+# テスト実行
+poe test
+
+# リント
+poe check
+
+# 型チェック
+poe mypy
+
+# 全チェック & ビルド & スモークテスト
+poe build
+```
+
+### 開発要件
+
+- uv
+- Python == 3.12, 3.10 (テスト用)
+
+## ライセンス
+
+MIT

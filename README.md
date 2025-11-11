@@ -23,15 +23,15 @@ uvx uvbump <options>
 
 # Or
 uv tool install uvbump
-uvbump
+uvbump <options>
 
 # Using pip
 pip install uvbump
-uvbump
+uvbump <options>
 
 # Using poetry
 poetry add --group dev uvbump
-poetry run uvbump
+poetry run uvbump <options>
 ```
 
 ## Usage
