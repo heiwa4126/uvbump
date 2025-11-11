@@ -1,6 +1,6 @@
 [project]
 name = "bumpuv"
-version = "0.0.1a3"
+version = "0.0.1a4"
 description = "Version bumping tool for Python projects using pyproject.toml, similar to npm version"
 keywords = [
     "version",
