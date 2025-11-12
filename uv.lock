@@ -8,7 +8,7 @@ resolution-markers = [
 
 [[package]]
 name = "bumpuv"
-version = "0.0.3"
+version = "0.0.4a1"
 source = { editable = "." }
 dependencies = [
     { name = "colorama" },
