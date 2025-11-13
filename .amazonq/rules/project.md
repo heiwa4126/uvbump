@@ -61,3 +61,8 @@
 - Automatic commit with version number as message
 - Automatic tagging (v{version} or test-{version})
 - No automatic pushing to remote
+
+## Code Review Rules
+
+- Exclude files and directories specified in .gitignore from code reviews
+- Skip scanning: __pycache__/, *.py[oc], build/, dist/, wheels/, *.egg-info, .venv, .env*, .ruff_cache/, .mypy_cache/, .pytest_cache/, tmp/, *.tmp, *.dump
